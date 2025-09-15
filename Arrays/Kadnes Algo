@@ -1,0 +1,27 @@
+// Third approach kadnes approach
+public class BINARY_SEARCH {
+
+  public static void kadnes(int numbers[]){
+    int max_sum = Integer.MIN_VALUE;
+    int currSum = 0;
+
+    for(int i = 0; i < numbers.length; i++){
+      currSum += numbers[i];
+      if(currSum < 0){
+        currSum = 0;
+      }
+
+      max_sum = Math.max(currSum, max_sum);
+    }
+
+    System.out.println("Max sum of subarray is : " + max_sum);
+  }
+  public static void main(String[] args) {
+    int numbers[] = {-2,-3,4,-1,-2,1,5,-3};
+    kadnes(numbers);
+  }
+  
+}
+
+// }
+
