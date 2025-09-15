@@ -1,0 +1,26 @@
+public class ARRAYS_ASSINGEMENT {
+
+    public static int Buyandsell(int prices[]){
+        int bp = Integer.MAX_VALUE;
+        int max_profit = 0;
+
+        for(int i = 0; i < prices.length; i++){
+            if(bp < prices[i]){
+                int profit = prices[i] - bp;
+                max_profit = Math.max(max_profit, profit);
+            }
+           
+            else{
+                bp = prices[i];
+            }
+            
+        }
+        return max_profit;
+    }
+
+    public static void main(String[] args) {
+        int prices[] = {7,6,4,3,1};
+        System.out.println(Buyandsell(prices));
+
+    }
+}
