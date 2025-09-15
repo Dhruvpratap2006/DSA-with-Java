@@ -1,0 +1,56 @@
+// Brute force approach
+public class CINTAINER_WITH_MAX_WATER {
+
+    public static int Container(int height[]){
+        int maxWater = 0;
+        // Find left boundary
+        for(int i = 0; i < height.length; i++){
+            // Find right bound by another loop
+            for(int j = i+1; j<height.length; j++){
+                int width = j-i; // Calculate width
+                int ht = Math.min(height[i] , height[j]);  // Take min height from right and left bound
+                int area_container = width * ht;
+                maxWater = Math.max(area_container , maxWater);
+
+            
+            }
+        }
+        return maxWater;
+    }
+    public static void main(String[] args) {
+        int height[] = {1,8,6,2,5,4,8,3,7};
+        System.out.println(Container(height));
+     }
+}
+
+// Two pointer approach
+
+public class CINTAINER_WITH_MAX_WATER {
+
+    public static int Container(int height[]){
+        int maxWater = 0;
+        int leftBound = 0 , rightBound = height.length-1;
+
+        while(leftBound < rightBound){
+            int width = rightBound - leftBound;
+            int ht = Math.min(height[rightBound] , height[leftBound]);
+
+            int area_container = width*ht;
+            maxWater = Math.max(maxWater , area_container);
+
+            if(height[leftBound] < height[rightBound]){
+                leftBound++;
+            }
+            else{
+                rightBound--;
+            }
+
+        }
+        return maxWater;
+    }
+    public static void main(String[] args) {
+        int height[] = {1,8,6,2,5,4,8,3,7};
+        System.out.println(Container(height));
+    }
+
+}
