@@ -1,5 +1,6 @@
 Print the max sub array sum
 
+// first approach
 public class Max_Sub_Array_Sum {
 
   public static void getMaxSum(int numbers[]){
