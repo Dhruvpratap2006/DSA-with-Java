@@ -1,0 +1,72 @@
+import java.util.*;
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        // 0(n^3) -> not optimized
+        // List<List<Integer>> result = new ArrayList<>();
+
+        // int n = nums.length;
+        // for(int i = 0; i < n; i++){
+        //     for(int j = i+1; j < n; j++){
+        //         for(int k = j+1; k < n; k++){
+        //             ArrayList<Integer> temp = new ArrayList<>(); // tempoary arraylist in which we are going to add our answer
+        //             if(nums[i] + nums[j] + nums[k] == 0){
+        //                 temp.add(nums[i]);
+        //                 temp.add(nums[j]);
+        //                 temp.add(nums[k]);
+        //                 Collections.sort(temp);
+        //                 if(!result.contains(temp)){
+        //                    result.add(temp);
+        //                  }
+        //             }
+                    
+        //         }
+        //     }
+        // }
+        
+        // return result;
+
+        // optimized approach -> 0(n^2) using two pointer
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+
+        for(int i = 0; i < nums.length-2; i++){
+
+            int left = i+1;
+            int right = nums.length-1;
+
+        // condition for first element does not have any duplicate..
+            if(i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+
+            while(left < right){
+                // finding sum
+                int sum = nums[i] + nums[left] + nums[right];
+
+                // now checking
+                if(sum == 0){
+                    result.add(Arrays.asList(nums[i] , nums[left] , nums[right]));
+
+                    // if we encounter any duplicate through left skip it
+                while(left < right && nums[left] == nums[left + 1]){ 
+                    left++;
+                }
+                // if we encounter any duplicate through right skip it
+                while(left < right && nums[right] == nums[right - 1]){
+                    right--;
+                }
+                left ++;
+                right--;
+                }
+
+                else if(sum < 0){
+                    left ++;
+                }
+                else{
+                    right--;
+                }
+            }
+        }
+        return result;
+    }
+}
