@@ -1,0 +1,23 @@
+// Here we are returning the count of element i.e 7\
+// We cant optimized it further as in staircase approach or binary approach we need sorted matrix
+// T.C = O(n*m)
+
+public class Main {
+        
+    public static int countOf(int mat[][] , int target) {
+        int count = 0;
+        for(int i = 0; i < mat.length; i++) {
+            for(int j = 0; j < mat[0].length; j++) {
+                if(mat[i][j] == target) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        int mat[][] = {{4,7,8} , {8,8,7}};
+        System.out.println(countOf(mat , 7));
+    }
+}
