@@ -1,0 +1,31 @@
+class Solution {
+    //  basically in this question we have to check the palindrome after ignoring all the white spaces or comma or any special character 
+    // so for this we ha e use Character.isLetterOrDigit(ch) that will chechk and return false if in string there is white spaces and special character also
+
+    // And we dont have to take any case sensitivity issue also so we use Character.toLowerCase
+    public boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length()-1;
+
+        while(left < right) {
+            // here we can skip that idex which do not contain any letter or digit from left side as 
+
+            //Character.isLetterOrDigit(ch) : Checks whether the character ch is either a letter or a digit.
+            while(left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+                left ++;
+            }
+            
+            // same we check for right side and skip the iteration
+            while(left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+                right--;
+            }
+
+            if(Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+                return false;
+            }
+            left ++;
+            right --;
+        }
+        return true;
+    }
+}
