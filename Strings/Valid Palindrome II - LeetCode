@@ -1,0 +1,26 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+        int i = 0 , j = s.length()-1;
+        while(i < j) {
+            if(s.charAt(i) != s.charAt(j)) {
+                // here our string is not a palindrome but in this question we can delete at most one character from the string and check now if it is palindrome or not and for this we havemake the iPalindrome()
+                return isPalindrome(s , i , j-1) || isPalindrome(s , i+1 , j);
+
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+;
+    public boolean isPalindrome(String s  , int left , int right) {
+        while(left < right) {
+            if(s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
